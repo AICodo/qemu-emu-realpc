@@ -723,7 +723,7 @@ index 2e6ef89b98..7c8fa289f4 100644
      aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
      aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
 diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-index aa24050493..365e88e69d 100644
+index aa24050493..0220c0fe88 100644
 --- a/hw/nvram/fw_cfg.c
 +++ b/hw/nvram/fw_cfg.c
 @@ -56,7 +56,7 @@
@@ -735,15 +735,6 @@ index aa24050493..365e88e69d 100644
  
  struct FWCfgEntry {
      uint32_t len;
-@@ -202,7 +202,7 @@ static void fw_cfg_bootsplash(FWCfgState *s)
- 
-     /* insert splash file if user configurated */
-     if (current_machine->boot_config.splash) {
--        const char *boot_splash_filename = current_machine->boot_config.splash;
-+        const char *boot_splash_filename = "/usr/share/kvm/bootsplash.jpg";
-         filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, boot_splash_filename);
-         if (filename == NULL) {
-             error_report("failed to find file '%s'", boot_splash_filename);
 diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
 index b806a2286f..ea7833bbe8 100644
 --- a/hw/pci-host/gpex.c
@@ -2082,18 +2073,6 @@ index 2d839fce6c..1b64a22bd3 100644
          [RDMA_CONTROL_RAM_BLOCKS_REQUEST] = "RAM BLOCKS REQUEST",
          [RDMA_CONTROL_RAM_BLOCKS_RESULT] = "RAM BLOCKS RESULT",
          [RDMA_CONTROL_COMPRESS] = "COMPRESS",
-diff --git a/pc-bios/meson.build b/pc-bios/meson.build
-index 3c41620044..3cfdb9d744 100644
---- a/pc-bios/meson.build
-+++ b/pc-bios/meson.build
-@@ -34,6 +34,7 @@ blobs = [
-   'bios-microvm.bin',
-   'qboot.rom',
-   'vgabios.bin',
-+	'bootsplash.jpg',
-   'vgabios-cirrus.bin',
-   'vgabios-stdvga.bin',
-   'vgabios-vmware.bin',
 diff --git a/pc-bios/optionrom/optionrom.h b/pc-bios/optionrom/optionrom.h
 index 7bcdf0eeb2..cfde180a64 100644
 --- a/pc-bios/optionrom/optionrom.h
