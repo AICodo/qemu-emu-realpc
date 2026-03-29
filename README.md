@@ -13,10 +13,10 @@
 ```
 Patching and building QEMU
 git clone https://github.com/AICodo/qemu-emu-realpc
-wget https://download.qemu.org/qemu-10.1.2.tar.xz
-tar xvJf qemu-10.1.2.tar.xz
-cd qemu-10.1.2
-git apply ../qemu-emu-realpc/qemu-10.1.2.patch
+wget https://download.qemu.org/qemu-10.2.1.tar.xz
+tar xvJf qemu-10.2.1.tar.xz
+cd qemu-10.2.1
+git apply ../qemu-emu-realpc/qemu-10.2.1.patch
 ./configure
 sudo make install -j$(nproc)
 ```
